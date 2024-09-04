@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Analyzer</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script src="/js/scripts.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Java File Cohesion and Coupling Analyzer</h1>
+        <form id="upload-form" method="post" enctype="multipart/form-data" th:action="@{/analyze}">
+            <div class="drop-zone" id="drop-zone">
+                <input type="file" id="file-input" name="files" multiple />
+                <span id="drop-zone-text">Drag & Drop Java Files Here</span>
+            </div>
+            <button type="submit">Analyze</button>
+        </form>
+        <div class="chart-container" th:if="${cohesionChart}">
+            <h2>Cohesion Chart</h2>
+            <img th:src="@{${cohesionChart}}" alt="Cohesion Chart" />
+        </div>
+        <div class="chart-container" th:if="${couplingChart}">
+            <h2>Coupling Chart</h2>
+            <img th:src="@{${couplingChart}}" alt="Coupling Chart" />
+        </div>
+    </div>
+</body>
+</html>
